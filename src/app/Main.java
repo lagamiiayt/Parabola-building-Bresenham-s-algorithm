@@ -18,6 +18,7 @@ public class Main extends JFrame {
     }
 
     public static void main(String[] args) {
+        // Запуск UI в Event Dispatch Thread
         SwingUtilities.invokeLater(Main::new);
     }
 }

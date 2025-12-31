@@ -10,10 +10,12 @@ public class Parabola {
         this.c = c;
     }
 
+    // Возвращает значение функции в точке x
     public double valueAt(double x) {
         return a * x * x + b * x + c;
     }
 
+    // формулы Брезенхейма используют a и b
     public double getA() {
         return a;
     }

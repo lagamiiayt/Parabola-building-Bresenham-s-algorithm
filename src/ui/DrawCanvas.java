@@ -11,8 +11,10 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+// Отвечает за взаимодействие с пользователем, хранение набора точек и вызов рендеринга
 public class DrawCanvas extends JPanel {
 
+    // Видимая математическая область
     private final CoordinateTransformer tr =
             new CoordinateTransformer(-5, 10, -5, 10);
 
@@ -28,6 +30,7 @@ public class DrawCanvas extends JPanel {
         });
     }
 
+    // Переводим экранные координаты в математические, сохраняем точки и вызываем ParabolaSolver
     private void handleClick(int x, int y) {
         if (points.size() == 3) {
             points.clear();
@@ -38,6 +41,7 @@ public class DrawCanvas extends JPanel {
 
         if (points.size() == 3) {
             try {
+                // Переводим экранные пиксели в координаты
                 double x1 = tr.toMathX(points.get(0).x, getWidth());
                 double y1 = tr.toMathY(points.get(0).y, getHeight());
                 double x2 = tr.toMathX(points.get(1).x, getWidth());
@@ -76,7 +80,7 @@ public class DrawCanvas extends JPanel {
         int x0 = tr.toScreenX(0, getWidth());
         int y0 = tr.toScreenY(0, getHeight());
         g.setColor(Color.LIGHT_GRAY);
-        g.drawLine(0, y0, getWidth(), y0);
-        g.drawLine(x0, 0, x0, getHeight());
+        g.drawLine(0, y0, getWidth(), y0); // горизонталь
+        g.drawLine(x0, 0, x0, getHeight()); // вертикаль
     }
 }

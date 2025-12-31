@@ -4,6 +4,7 @@ import java.awt.*;
 import math.Parabola;
 import util.CoordinateTransformer;
 
+// Содержит только код отрисовки
 public class ParabolaRenderer {
 
     public static void draw(
@@ -31,6 +32,7 @@ public class ParabolaRenderer {
             int sy = tr.toScreenY(y, height);
 
             if (prevX != Integer.MIN_VALUE) {
+                // Линия между соседними пикселями — сглаживание кривой
                 g.drawLine(prevX, prevY, sx, sy);
             } else {
                 g.fillRect(sx, sy, 1, 1);
@@ -39,12 +41,14 @@ public class ParabolaRenderer {
             prevX = sx;
             prevY = sy;
 
+            // Инкрементальная схема Брезенхейма
             y += dy;
             dy += d2;
             x_m += dx;
         }
     }
 
+    // возвращают границы math X в единичном масштабе
     private static double trX1(CoordinateTransformer tr) {
         return tr.toMathX(0, 1);
     }
