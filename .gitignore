@@ -1,7 +1,13 @@
 ### IntelliJ IDEA ###
+.idea/
+*.iml
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
+
+# Build directories
+target/
+build/
 
 ### Eclipse ###
 .apt_generated
@@ -24,6 +30,9 @@ bin/
 
 ### VS Code ###
 .vscode/
+
+# OS
+Thumbs.db
 
 ### Mac OS ###
 .DS_Store
